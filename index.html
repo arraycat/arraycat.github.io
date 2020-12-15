@@ -1,15 +1,421 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>测试</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- APP标题，必须修改。 -->
+    <title>通信打工人</title>
+    <!-- 以下是标准库，不能修改。 -->
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!-- 以上是标准库，不能修改。 -->
+    <!--Timer库-->
+    <script src="jquery.timer.js"></script>
+    <!--自己的CSS-->
+    <link rel="stylesheet" type="text/css" href="mycss.css">
+    <!-- 自动停止播放 -->
+    <script src="autostop.js"></script>
+    <!-- 主程序 -->
+    <script src="myapp.js"></script>
+    <!-- 让全局导航按钮高亮的库 -->
+    <script src="navbar.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+        integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+        integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous">
+        </script>
 </head>
+
 <body>
 
-<p>
-    <a herf="https://zhangguanping.cn">喵的小黑板</a>
-    202012151943
-</p>
+    <!-- 全局头部工具栏开头 -->
+    <div id="myHeader" data-role="header" data-position="fixed" data-theme="a" class="globalUI">
+        <a href="#myPanel1" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-left">关于</a>
+        <h1>通信打工人</h1>
+        <a href="#page3" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">首页</a>
+    </div>
+    <!-- 全局头部工具栏结尾 -->
+
+
+    <!-- 全局脚部导航栏开头 -->
+    <div id="myFooter" data-role="footer" data-position="fixed" data-theme="a" class="globalUI">
+        <div data-role="navbar" data-position="fixed" data-theme="a">
+            <ul>
+                <li>
+                    <a href="#page1" data-icon="audio">个人简介</a>
+                </li>
+                <li>
+                    <a href="#page2" data-icon="grid">专业技能</a>
+                </li>
+                <li>
+                    <a href="#page3" data-icon="home">主页</a>
+                </li>
+                <li>
+                    <a href="#page4" data-icon="bars">期待待遇</a>
+                </li>
+                <li <!-- 自定义的图标 -->
+                    <a href="#page5" class="ui-btn ui-btn-icon-top ui-icon-myicon">联系关平</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 全局脚部导航栏结尾 -->
+
+    <!-- 左侧边面板开头 -->
+    <div id="myPanel1" data-role="panel" data-theme="a" class="globalUI">
+        <h2>版权信息</h2>
+        <p>2020秋季学期<br>
+            素选课程<br>
+            APP的设计与开发入门<br>
+            作品
+
+        </p>
+    </div>
+    <!-- 左侧边面板结尾 -->
+
+    <!-- 全局图片弹窗开始 -->
+    <div data-role="popup" id="myImgPopup">
+        <a data-rel="back"
+            class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        <img id="popupWinImg" src="#">
+    </div>
+    <!-- 全局图片弹窗结尾 -->
+
+    <!-- Splash页开始 -->
+    <div data-role="page" data-fullscreen="true" id="page0" class="mySplash">
+
+        <div data-role="main" class="ui-content">
+
+            <button id="skipButton" data-role="button" data-inline="true">跳过 <span id="mySecond"></span></button>
+
+        </div>
+
+    </div>
+    <!-- Splash页结束 -->
+
+    <!-- page1开头 -->
+    <div data-role="page" id="page1">
+
+
+        <div class="mdui-container mdui-p-t-5" class="mdui-theme-primary-indigo mdui-theme-accent-pink">
+            <button class="mdui-btn mdui-color-theme-accent" mdui-menu="{target: '#example-2'}">open</button>
+            <ul class="mdui-menu" id="example-2">
+                <li class="mdui-menu-item">
+                    <a href="javascript:;" class="mdui-ripple">
+                        <i class="mdui-menu-item-icon mdui-icon material-icons">remove_red_eye</i>Preview
+                    </a>
+                </li>
+                <li class="mdui-menu-item">
+                    <a href="javascript:;" class="mdui-ripple">
+                        <i class="mdui-menu-item-icon mdui-icon material-icons">file_download</i>Download
+                    </a>
+                </li>
+                <li class="mdui-divider"></li>
+                <li class="mdui-menu-item">
+                    <a href="javascript:;" class="mdui-ripple">
+                        <i class="mdui-menu-item-icon mdui-icon material-icons">delete</i>Remove
+                    </a>
+                </li>
+                <li class="mdui-menu-item">
+                    <a href="javascript:;" class="mdui-ripple">
+                        <i class="mdui-menu-item-icon"></i>Empty
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ********个人简介******** -->
+        <!-- 主内容开头 -->
+        <div data-role="main" class="ui-content">
+
+            <img src="p1.jpg">
+            <center>
+                <article id="university">
+                    <h2>毕业学校</h2>
+                    <p>
+                        云南大学<br>
+                    </p>
+                </article>
+                <article id="zhuanye">
+                    <h2>毕业专业</h2>
+                    <p>
+                        通信工程<br>
+                    </p>
+                </article>
+                <article id="university">
+                    <h2>籍贯</h2>
+                    <p>
+                        云南昆明东川<br>
+                    </p>
+                </article>
+                <article id="hobby">
+                    <h2>爱好</h2>
+                    <p>
+                        跑步，听音乐，看书<br>
+                    </p>
+                </article>
+                <article id="education">
+                    <h2>教育经历</h2>
+                    <p>
+                        小学：中学：高中：大学：<br>
+
+                    </p>
+                </article>
+                <article id="exp">
+                    <h2>社团活动</h2>
+                    <p>
+                        2018年秋-2019年春：<br>
+                        2019年秋-2020年春：<br>
+
+                    </p>
+                </article>
+                <article id="exp2">
+                    <h2>大型志愿活动</h2>
+                    <p>
+                        2018年10月-12月：<br>
+                        2019年10月-12月：<br>
+
+                    </p>
+                </article>
+            </center>
+        </div>
+        <!-- 主内容结尾 -->
+
+    </div>
+    <!-- page1结尾 -->
+
+    <!-- page2开头 -->
+    <div data-role="page" id="page2">
+
+        <!-- 主内容开头 -->
+        <div data-role="main" class="ui-content">
+
+            <img src="g7.gif">
+
+
+            <div class="mdui-card">
+                <div class="mdui-card-header">
+                    <img class="mdui-card-header-avatar"
+                        src="https://cdn.w3cbus.com/mdui.org/docs/assets/docs/img/avatar1.jpg" />
+                    <div class="mdui-card-header-title">Title</div>
+                    <div class="mdui-card-header-subtitle">Subtitle</div>
+                </div>
+                <div class="mdui-card-media">
+                    <img src="https://cdn.w3cbus.com/mdui.org/docs/assets/docs/img/card.jpg" />
+                    <div class="mdui-card-menu">
+                        <button class="mdui-btn mdui-btn-icon mdui-text-color-white"><i
+                                class="mdui-icon material-icons">share</i></button>
+                    </div>
+                </div>
+                <div class="mdui-card-primary">
+                    <div class="mdui-card-primary-title">Title</div>
+                    <div class="mdui-card-primary-subtitle">Subtitle</div>
+                </div>
+                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                <div class="mdui-card-actions">
+                    <button class="mdui-btn mdui-ripple">action 1</button>
+                    <button class="mdui-btn mdui-ripple">action 2</button>
+                    <button class="mdui-btn mdui-btn-icon mdui-float-right"><i
+                            class="mdui-icon material-icons">expand_more</i></button>
+                </div>
+            </div>
+
+            <article id="skill-1">
+                <h2>会使用的操作系统</h2>
+                <p>
+                    Windows Desktop/Server<br>
+                    Ubuntu Desktop/Server<br>
+                </p>
+            </article>
+
+            <article id="skill0">
+                <h2>会使用的基本电脑软件</h2>
+                <p>
+                    Office三件套，WPS，Photoshop，Premier，An（主要用于制作GIF表情包）
+                </p>
+
+                <h2>会使用的通信相关专业软件</h2>
+                <p>
+                    Auto CAD，Multisim，HFSS（电磁场与电磁波实验课程），Matlab，Quartus II（数字电路实验课程），
+                    Altium Designer（电子工艺实习课程）。
+                </p>
+
+                <h2>会使用的网络相关软件</h2>
+                <p>
+                    网络分析工具：WireShark，浏览器开发调试工具<br>
+                    网络仿真工具：HuaWei Ensp，Cisco Packet Tracer<br>
+
+                </p>
+
+            </article>
+
+            <article id="skill1">
+                <h2>学过的语言</h2>
+                <p>X86/ARM汇编语言（专业必修：微机原理与接口技术），C语言（专业必修：计算机程序设计），
+                    Java（专业选修：面向对象程序设计，移动应用开发（Android）），SQL（专业选修：数据库系统及应用）
+                    Python（素选：Python程序设计），HTML、JavaScript、JQ、JQM、MongoDB、Node.js（素选：APP的设计与开发入门）<br></p>
+                <p>其中，最为熟悉的是Java。</p>
+            </article>
+
+            <article id="skill2">
+                <h2>参与过的软件项目</h2>
+                <p><a href="https://zhangguanping.cn/mi">“小密书”云密码本</a>数据库课程&&双创课程项目，
+                    团队成员：张关平，王钲雯，黄飞龙，安泓星，周函稷，来成越，李顺龙。</p>
+                <p>项目属性：Java Web项目<br>
+                    数据库：MySQL8.0<br>
+                    Web服务器：Tomcat 9.0.16<br>
+                    云服务器：Ubuntu 18.04 LTS<br>
+                    项目地址：<a href="https://zhangguanping.cn/mi">地址</a><br>
+                    源代码：<a href="https://github.com/arraycat/passwdmin">https://github.com/arraycat/passwdmin</a>
+                </p>
+            </article>
+
+            <article id="skill3">
+                <h2>通信理论</h2>
+                <p>
+                    电磁场与电磁波，信号与系统，通信原理，数字信号处理
+                </p>
+            </article>
+            <article id="skill4">
+                <h2>硬件知识</h2>
+                <p>
+                    电路基本知识，元器件识别，电路焊接，PCB绘图（Altium Designer）
+                </p>
+            </article>
+
+        </div>
+        <!-- 主内容结尾 -->
+
+    </div>
+    <!-- page2结尾 -->
+
+    <!-- page3开头 -->
+    <div data-role="page" id="page3">
+
+        <!-- 主内容开头 -->
+        <div data-role="main" class="ui-content">
+
+            <img src="p2.jpg">
+            <img src="p3.jpg">
+            <img src="p5.jpg">
+
+        </div>
+        <!-- 主内容结尾 -->
+
+    </div>
+    <!-- page3结尾 -->
+
+    <!-- page4开头 -->
+    <div data-role="page" id="page4">
+
+        <!-- 主内容开头 -->
+        <div data-role="main" class="ui-content">
+            <center>
+                <article id="remuneration">
+                    <h2>基本期待</h2>
+                    <p> 工作有弹性，有适当假期。<br>
+                        劳有所得。<br>
+                        有人文关怀。<br>
+                    </p>
+                </article>
+                <article id="remuneration">
+                    <h2>其它</h2>
+                    <img src="p4.jpg">
+                </article>
+            </center>
+
+        </div>
+        <!-- 主内容结尾 -->
+
+    </div>
+    <!-- page4结尾 -->
+
+    <!-- page5开头 -->
+    <div data-role="page" id="page5">
+        <!-- 主内容开头 -->
+        <div data-role="main" class="ui-content">
+            <div class="mdui-container" class="center">
+                <img class="mdui-img-circle" src="p6.jpg" />
+            </div>
+            <!-- <img src="p6.jpg"> -->
+            <!-- <p>
+                &emsp;&emsp;姓&emsp;&emsp;名：张关平<br>
+                &emsp;&emsp;邮&emsp;&emsp;箱：<a href="mailto:pingguanzhang@qq.com">pingguanzhang@qq.com </a><br>
+                &emsp;&emsp;电&emsp;&emsp;话：<a href="tel:13800871500">13800871500</a><br>
+                &emsp;&emsp;个人网站：<a href="https://zhangguanping.cn">https://zhangguanping.cn </a><br>
+                &emsp;&emsp;哔哩哔哩：<a href="https://space.bilibili.com/346381477">关平大侠 </a><br>
+                &emsp;&emsp;微&emsp;&emsp;博：<a href="https://weibo.com/u/5893297187">平关张 </a><br>
+                &emsp;&emsp;GitHub：<a href="https://github.com/arraycat">arraycat </a><br>
+            </p> -->
+
+            <div class="mdui-container">
+                <div class="mdui-table-fluid">
+                    <table class="mdui-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th></th>
+                                <th></th>
+                                <!-- <th class="mdui-table-col-numeric">age</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>姓名</td>
+                                <td>张关平</td>
+                                <!-- <td>18</td> -->
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>邮箱</td>
+                                <td><a href="mailto:pingguanzhang@qq.com">pingguanzhang@qq.com </a></td>
+                                <!-- <td>21</td> -->
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>电话</td>
+                                <td><a href="tel:13800871500">13800871500</a></td>
+                                <!-- <td>9</td> -->
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>网站</td>
+                                <td><a href="https://zhangguanping.cn">https://zhangguanping.cn </a></td>
+                                <!-- <td>9</td> -->
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>B站</td>
+                                <td><a href="https://space.bilibili.com/346381477">关平大侠 </a></td>
+                                <!-- <td>9</td> -->
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>微博</td>
+                                <td><a href="https://weibo.com/u/5893297187">平关张 </a></td>
+                                <!-- <td>9</td> -->
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>GitHub</td>
+                                <td><a href="https://github.com/arraycat">arraycat </a></td>
+                                <!-- <td>9</td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主内容结尾 -->
+
+    </div>
+    <!-- page5结尾 -->
 
 </body>
+
 </html>
